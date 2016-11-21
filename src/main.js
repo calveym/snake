@@ -6,11 +6,19 @@ window.onload = function () {
   function gameLoop(self) {
     tick += 1;
     updatePosition();
-    draw();
+    if(tick % 20 === 0) {
+      draw();
+    }
     requestAnimationFrame(gameLoop);
   }
   gameLoop(this);
+
   function updatePosition() {}
-  function draw() {}
-  
+
+  function draw() {
+    snake.forEach(function(cube) {
+
+    });
+  }
+
 };
