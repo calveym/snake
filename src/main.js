@@ -16,6 +16,9 @@ window.onload = function () {
       screen.fillRect(item[0] * 40, item[1] * 40, 40, 40);
     });
 
+    
+
+
     addRect(0, 0);
     addRect(2, 2);
     addRect(0, 8);
