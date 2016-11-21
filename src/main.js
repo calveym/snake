@@ -18,18 +18,7 @@ window.onload = function () {
 
   function updatePosition() {
     var head = snake.getHeadPosition();
-    if (snake.direction === 'down'){
-      snake.position.unshift([head[0], head[1] + 1]);
-    }
-    else if (snake.direction === 'up'){
-      snake.position.unshift([head[0], head[1] - 1]);
-    }
-    else if (snake.direction === 'left'){
-      snake.position.unshift([head[0] - 1, head[1]]);
-    }
-    else if (snake.direction === 'right'){
-      snake.position.unshift([head[0] + 1, head[1]]);
-    }
+    snake.move(head);
     snake.position.pop();
 
     snake.checkBoundary();
@@ -44,7 +33,7 @@ window.onload = function () {
 
   function Snake() {
     this.direction = 'down';
-    this.position = [[10, 10], [10, 9], [10, 8], [10, 7]];
+    this.position = [[10, 10], [10, 9], [10, 8], [10, 7], [10, 6], [10, 5]];
   }
 
   Snake.prototype.getHeadPosition = function () {
@@ -63,6 +52,21 @@ window.onload = function () {
     }
     else if (this.position[0][1] < 0){
       this.position[0][1] = 24;
+    }
+  };
+
+  Snake.prototype.move = function(head) {
+    if (this.direction === 'down'){
+      this.position.unshift([head[0], head[1] + 1]);
+    }
+    else if (this.direction === 'up'){
+      this.position.unshift([head[0], head[1] - 1]);
+    }
+    else if (this.direction === 'left'){
+      this.position.unshift([head[0] - 1, head[1]]);
+    }
+    else if (this.direction === 'right'){
+      this.position.unshift([head[0] + 1, head[1]]);
     }
   };
 
