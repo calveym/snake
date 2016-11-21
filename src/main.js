@@ -17,7 +17,7 @@ window.onload = function () {
 
   function draw() {
     snake.forEach(function(cube) {
-
+      screen.fillRect(cube[0] * 40, cube[1] * 40, 40, 40);
     });
   }
 
