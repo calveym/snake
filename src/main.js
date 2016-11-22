@@ -8,7 +8,7 @@ window.onload = function () {
 
   function Food () {
     this.foodExists = false;
-  };
+  }
 
   Food.prototype.updateFood = function () {
     if(this.foodExists) {
@@ -25,7 +25,7 @@ window.onload = function () {
     return [x,y];
   };
 
-  Food.prototype.drawFood = function ([x,y]) {
+  Food.prototype.drawFood = function ([x, y]) {
       screen.fillRect(x * size, y * size, size, size);
       this.foodCoor = [x,y];
       this.foodExists = true;
@@ -34,22 +34,24 @@ window.onload = function () {
   Food.prototype.isFoodEaten = function (head) {
     if (head[0] === this.foodCoor[0] && head[1] === this.foodCoor[1]) {
       this.foodExists = false;
+      this.feedTick = tick;
       this.updateFood();
       snake.position.unshift(this.foodCoor);
-    };
+    }
   };
 
   function gameLoop(self) {
     tick += 1;
     if(tick === 1){
       setup();
-    };
-    if(tick % 10 === 0) {
+    }
+    if(tick % 7 === 0) {
       updatePosition();
     }
     draw();
     requestAnimationFrame(gameLoop);
   }
+
   gameLoop(this);
   window.addEventListener('keydown',doKeyDown,true);
 
@@ -61,7 +63,11 @@ window.onload = function () {
     var head = snake.getHeadPosition();
     food.isFoodEaten(head);
     snake.move(head);
-    snake.position.pop();
+    if(tick - food.feedTick >= 20) {
+      snake.position.pop();
+    } else if(food.feedTick === undefined) {
+      snake.position.pop();
+    }
     snake.checkBoundary();
   }
 
@@ -75,7 +81,7 @@ window.onload = function () {
 
   function Snake() {
     this.direction = 'down';
-    this.position = [[10, 10], [10, 9], [10, 8], [10, 7], [10, 6], [10, 5]];
+    this.position = [[10, 10]];
   }
 
   Snake.prototype.getHeadPosition = function () {
