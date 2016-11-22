@@ -5,17 +5,45 @@ window.onload = function () {
   var size = 20;
   var canvasSize = 500;
   var food = new Food();
-  console.log(food)
+
+  function Food () {
+    this.foodExists = false;
+  };
+
+  Food.prototype.updateFood = function () {
+    if(this.foodExists) {
+      this.drawFood(this.foodCoor);
+    } else {
+      this.drawFood(this.randomCoor());
+    }
+
+  };
+
+  Food.prototype.randomCoor = function () {
+    var x = Math.floor(Math.random() * 10);
+    var y = Math.floor(Math.random() * 10);
+    return [x,y];
+  };
+
+  Food.prototype.drawFood = function ([x,y]) {
+      screen.fillRect(x*20,y*20, 20, 20);
+      this.foodCoor = [x,y];
+      this.foodExists = true;
+  };
+
+  Food.prototype.isFoodEaten = function () {
+    if (snake.position[0] == this.foodCoor) {
+      this.foodExists = false;
+      this.updateFood();
+    };
+  };
 
   function gameLoop(self) {
     tick += 1;
     if(tick === 1){
-      console.log(food.updateFood)
-      food.updateFood();
+      setup();
     };
     if(tick % 10 === 0) {
-      food.isFoodEaten();
-
       updatePosition();
     }
     draw();
@@ -24,7 +52,13 @@ window.onload = function () {
   gameLoop(this);
   window.addEventListener('keydown',doKeyDown,true);
 
+  function setup() {
+    console.log(food.updateFood)
+    food.updateFood();
+  }
+
   function updatePosition() {
+    food.isFoodEaten();
     var head = snake.getHeadPosition();
     snake.move(head);
     snake.position.pop();
@@ -33,6 +67,7 @@ window.onload = function () {
 
   function draw() {
     screen.clearRect(0, 0, canvasSize, canvasSize);
+    food.updateFood();
     snake.position.forEach(function(cube) {
       screen.fillRect(cube[0] * size, cube[1] * size, size, size);
     });
@@ -102,38 +137,7 @@ window.onload = function () {
     }
   }
 
-function Food () {
-  this.foodExists = false;
-};
 
-Food.prototype.updateFood = function () {
-  if (this.foodExists === false){
-    this.drawFood(this.randomCoor());
-    console.log("updateFood")
-  };
-};
-
-Food.prototype.randomCoor = function () {
-  var x = Math.floor(Math.random() * 10);
-  var y = Math.floor(Math.random() * 10);
-  console.log([x,y])
-  return [x,y];
-
-};
-
-Food.prototype.drawFood = function ([x,y]) {
-    screen.fillRect(x*20,y*20, 20, 20);
-    this.foodCoor = [x,y];
-    this.foodExists = true;
-
-};
-
-Food.prototype.isFoodEaten = function () {
-  if (snake.position[0] == this.foodCoor) {
-    this.foodCoor = false;
-    this.updateFood();
-  };
-};
 
 
 };
