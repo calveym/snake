@@ -1,22 +1,24 @@
-Snake.prototype.checkBoundary = function () {
-  if (this.position[0][0] >= 25){
-    this.position[0][0] = 0;
+function Collision() {}
+
+Collision.prototype.checkBoundary = function (snake) {
+  if (snake.position[0][0] >= 25){
+    snake.position[0][0] = 0;
   }
-  else if (this.position[0][1] >= 25){
-    this.position[0][1] = 0;
+  else if (snake.position[0][1] >= 25){
+    snake.position[0][1] = 0;
   }
-  else if (this.position[0][0] < 0){
-    this.position[0][0] = 24;
+  else if (snake.position[0][0] < 0){
+    snake.position[0][0] = 24;
   }
-  else if (this.position[0][1] < 0){
-    this.position[0][1] = 24;
+  else if (snake.position[0][1] < 0){
+    snake.position[0][1] = 24;
   }
 };
 
-Food.prototype.isFoodEaten = function (head) {
-  if (head[0] === this.foodCoor[0] && head[1] === this.foodCoor[1]) {
-    this.foodExists = false;
-    this.feedTick = tick;
-    this.updateFood();
+Collision.prototype.isFoodEaten = function (tick, head, food) {
+  if (head[0] === food.foodCoor[0] && head[1] === food.foodCoor[1]) {
+    food.foodExists = false;
+    food.feedTick = tick;
+    food.updateFood();
   }
 };

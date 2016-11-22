@@ -27,28 +27,3 @@ Snake.prototype.move = function(head) {
     this.position.unshift([head[0] + 1, head[1]]);
   }
 };
-
-function doKeyDown(evt){
-  switch (evt.keyCode) {
-    case 38:
-      if(snake.direction != 'down'){
-        snake.direction = 'up';
-      }
-    break;
-    case 40:
-      if(snake.direction != 'up'){
-        snake.direction = 'down';
-      }
-    break;
-    case 37:
-      if(snake.direction != 'right'){
-        snake.direction = 'left';
-      }
-    break;
-    case 39:
-      if(snake.direction != 'left'){
-        snake.direction = 'right';
-      }
-    break;
-  }
-}

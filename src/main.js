@@ -5,10 +5,11 @@ window.onload = function () {
   var canvasSize = 500;
   var snake = new Snake(size, canvasSize, screen);
   var food = new Food(size, canvasSize, screen);
+  var collision = new Collision();
 
 
   function gameLoop(self) {
-    tick += 1;
+    tick++;
     if(tick === 1){
       setup();
     }
@@ -20,7 +21,7 @@ window.onload = function () {
   }
 
   gameLoop(this);
-  window.addEventListener('keydown',doKeyDown,true);
+  window.addEventListener('keydown', doKeyDown, true);
 
   function setup() {
     food.updateFood();
@@ -28,14 +29,14 @@ window.onload = function () {
 
   function update() {
     var head = snake.getHeadPosition();
-    food.isFoodEaten(head);
+    collision.isFoodEaten(tick, head, food);
     snake.move(head);
     if(tick - food.feedTick >= 20) {
       snake.position.pop();
     } else if(food.feedTick === undefined) {
       snake.position.pop();
     }
-    snake.checkBoundary();
+    collision.checkBoundary(snake);
   }
 
   function draw() {
@@ -44,5 +45,30 @@ window.onload = function () {
     snake.position.forEach(function(cube) {
       screen.fillRect(cube[0] * size, cube[1] * size, size, size);
     });
+  }
+
+  function doKeyDown(evt){
+    switch (evt.keyCode) {
+      case 38:
+        if(snake.direction != 'down'){
+          snake.direction = 'up';
+        }
+      break;
+      case 40:
+        if(snake.direction != 'up'){
+          snake.direction = 'down';
+        }
+      break;
+      case 37:
+        if(snake.direction != 'right'){
+          snake.direction = 'left';
+        }
+      break;
+      case 39:
+        if(snake.direction != 'left'){
+          snake.direction = 'right';
+        }
+      break;
+    }
   }
 };
