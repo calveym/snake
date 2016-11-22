@@ -21,6 +21,13 @@ window.onload = function () {
   }
 
   gameLoop(this);
+
+  function endGame() {
+    console.log("game over, snake died :( Your score: " + snake.position.length * 100)
+    document.getElementById("game").innerHTML = "game over, snake died :( Your score: " + snake.position.length * 100;
+      // hide canvas and show score page
+  };
+
   window.addEventListener('keydown', doKeyDown, true);
 
 
@@ -30,7 +37,9 @@ window.onload = function () {
 
   function update() {
 
-    var head = snake.getHeadPosition();
+
+    var head = snake.head();
+    collision.isSnakeOnSnake(snake, endGame)
     collision.isFoodEaten(tick, head, food);
     snake.move(head);
     if(tick - food.feedTick >= 20) {
@@ -38,7 +47,7 @@ window.onload = function () {
     } else if(food.feedTick === undefined) {
       snake.position.pop();
     }
-    collision.checkBoundary(snake);
+    collision.resolveBoundary(snake);
   }
 
   function draw() {

@@ -1,6 +1,6 @@
 function Collision() {}
 
-Collision.prototype.checkBoundary = function (snake) {
+Collision.prototype.resolveBoundary = function (snake) {
   if (snake.position[0][0] >= 25){
     snake.position[0][0] = 0;
   }
@@ -21,4 +21,13 @@ Collision.prototype.isFoodEaten = function (tick, head, food) {
     food.feedTick = tick;
     food.updateFood();
   }
+};
+
+Collision.prototype.isSnakeOnSnake = function (snake, endGame) {
+  for(i=1; i < snake.position.length; i++){
+    if (snake.position[i][0] === snake.head()[0] && snake.position[i][1] === snake.head()[1])
+    {
+      endGame()
+    }
+  };
 };
