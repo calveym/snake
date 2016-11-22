@@ -23,11 +23,13 @@ window.onload = function () {
   gameLoop(this);
   window.addEventListener('keydown', doKeyDown, true);
 
+
   function setup() {
     food.updateFood();
   }
 
   function update() {
+
     var head = snake.getHeadPosition();
     collision.isFoodEaten(tick, head, food);
     snake.move(head);
