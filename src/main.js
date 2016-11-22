@@ -20,21 +20,22 @@ window.onload = function () {
   };
 
   Food.prototype.randomCoor = function () {
-    var x = Math.floor(Math.random() * 10);
-    var y = Math.floor(Math.random() * 10);
+    var x = Math.floor(Math.random() * size);
+    var y = Math.floor(Math.random() * size);
     return [x,y];
   };
 
   Food.prototype.drawFood = function ([x,y]) {
-      screen.fillRect(x*20,y*20, 20, 20);
+      screen.fillRect(x * size, y * size, size, size);
       this.foodCoor = [x,y];
       this.foodExists = true;
   };
 
-  Food.prototype.isFoodEaten = function () {
-    if (snake.position[0] == this.foodCoor) {
+  Food.prototype.isFoodEaten = function (head) {
+    if (head[0] === this.foodCoor[0] && head[1] === this.foodCoor[1]) {
       this.foodExists = false;
       this.updateFood();
+      snake.position.unshift(this.foodCoor);
     };
   };
 
@@ -53,13 +54,12 @@ window.onload = function () {
   window.addEventListener('keydown',doKeyDown,true);
 
   function setup() {
-    console.log(food.updateFood)
     food.updateFood();
   }
 
   function updatePosition() {
-    food.isFoodEaten();
     var head = snake.getHeadPosition();
+    food.isFoodEaten(head);
     snake.move(head);
     snake.position.pop();
     snake.checkBoundary();
