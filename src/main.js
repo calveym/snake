@@ -20,7 +20,6 @@ window.onload = function () {
     var head = snake.getHeadPosition();
     snake.move(head);
     snake.position.pop();
-
     snake.checkBoundary();
   }
 
@@ -71,29 +70,27 @@ window.onload = function () {
   };
 
   function doKeyDown(evt){
-  switch (evt.keyCode) {
-  case 38:  /* Up arrow was pressed */
-          if(snake.direction != 'down'){
-                  snake.direction = 'up';
-                }
-  break;
-  case 40:  /* Down arrow was pressed */
-          if(snake.direction != 'up'){
-                 snake.direction = 'down';
-               }
-
-  break;
-  case 37:  /* Left arrow was pressed */
-          if(snake.direction != 'right'){
-                  snake.direction = 'left';
-              }
-  break;
-  case 39:  /* Right arrow was pressed */
-          if(snake.direction != 'left'){
-                  snake.direction = 'right';
-              }
-  break;
+    switch (evt.keyCode) {
+      case 38:
+        if(entity.direction != 'down'){
+          entity.direction = 'up';
+        }
+      break;
+      case 40:
+        if(entity.direction != 'up'){
+          entity.direction = 'down';
+        }
+      break;
+      case 37:
+        if(entity.direction != 'right'){
+          entity.direction = 'left';
+        }
+      break;
+      case 39:
+        if(entity.direction != 'left'){
+          entity.direction = 'right';
+        }
+      break;
+    }
   }
-  }
-
 };
