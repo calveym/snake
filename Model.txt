@@ -1,0 +1,20 @@
+
+Game - class - holds score.
+    - gameLoop - checks for game over. runs animation.
+
+
+Snake - class - tracks snake.
+      - update location?
+      - hits with tail
+
+
+grid/hits - class -  collision into walls. calls add to score if food is hit.
+
+food class - checks for food? randomly populates food.
+           - removes food if snake hits.
+
+
+Nice to have
+
+  High score board
+  Snake comes out other end of grid
