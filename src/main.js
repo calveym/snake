@@ -1,87 +1,46 @@
 window.onload = function () {
   var screen = document.getElementById("screen").getContext("2d");
   var tick = 0;
-  var snake = new Snake();
   var size = 20;
   var canvasSize = 500;
-  var food = new Food();
+  var snake = new Snake(size, canvasSize, screen);
+  var food = new Food(size, canvasSize, screen);
+  var collision = new Collision();
 
 
-// entity
-  function Food () {
-    this.foodExists = false;
-  }
-
-  Food.prototype.updateFood = function () {
-    if(this.foodExists) {
-      this.drawFood(this.foodCoor);
-    } else {
-      this.drawFood(this.randomCoor());
-    }
-
-  };
-
-  Food.prototype.randomCoor = function () {
-    var x = Math.floor(Math.random() * size);
-    var y = Math.floor(Math.random() * size);
-    return [x,y];
-  };
-
-  Food.prototype.drawFood = function ([x, y]) {
-      screen.fillRect(x * size, y * size, size, size);
-      this.foodCoor = [x,y];
-      this.foodExists = true;
-  };
-
-  Food.prototype.isFoodEaten = function (head) {
-    if (head[0] === this.foodCoor[0] && head[1] === this.foodCoor[1]) {
-      this.foodExists = false;
-      this.feedTick = tick;
-      this.updateFood();
-      snake.position.unshift(this.foodCoor);
-    }
-  };
-
-
-
-// MAIN
   function gameLoop(self) {
-    tick += 1;
+    tick++;
     if(tick === 1){
       setup();
     }
     if(tick % 7 === 0) {
-      updatePosition();
+      update();
     }
     draw();
     requestAnimationFrame(gameLoop);
   }
 
   gameLoop(this);
-  window.addEventListener('keydown',doKeyDown,true);
+  window.addEventListener('keydown', doKeyDown, true);
 
 
-  // main
   function setup() {
     food.updateFood();
   }
 
+  function update() {
 
-  // main
-  function updatePosition() {
     var head = snake.getHeadPosition();
-    food.isFoodEaten(head);
+    collision.isFoodEaten(tick, head, food);
     snake.move(head);
     if(tick - food.feedTick >= 20) {
       snake.position.pop();
     } else if(food.feedTick === undefined) {
       snake.position.pop();
     }
-    snake.checkBoundary();
+    collision.checkBoundary(snake);
   }
 
-
-  // main
   function draw() {
     screen.clearRect(0, 0, canvasSize, canvasSize);
     food.updateFood();
@@ -90,52 +49,6 @@ window.onload = function () {
     });
   }
 
-
-
-  // entity
-  function Snake() {
-    this.direction = 'down';
-    this.position = [[10, 10]];
-  }
-
-  Snake.prototype.getHeadPosition = function () {
-    return this.position[0];
-  };
-
-
-  // collision
-  Snake.prototype.checkBoundary = function () {
-    if (this.position[0][0] >= 25){
-      this.position[0][0] = 0;
-    }
-    else if (this.position[0][1] >= 25){
-      this.position[0][1] = 0;
-    }
-    else if (this.position[0][0] < 0){
-      this.position[0][0] = 24;
-    }
-    else if (this.position[0][1] < 0){
-      this.position[0][1] = 24;
-    }
-  };
-
-  Snake.prototype.move = function(head) {
-    if (this.direction === 'down'){
-      this.position.unshift([head[0], head[1] + 1]);
-    }
-    else if (this.direction === 'up'){
-      this.position.unshift([head[0], head[1] - 1]);
-    }
-    else if (this.direction === 'left'){
-      this.position.unshift([head[0] - 1, head[1]]);
-    }
-    else if (this.direction === 'right'){
-      this.position.unshift([head[0] + 1, head[1]]);
-    }
-  };
-
-
-  //inputter
   function doKeyDown(evt){
     switch (evt.keyCode) {
       case 38:
@@ -160,8 +73,4 @@ window.onload = function () {
       break;
     }
   }
-
-
-
-
 };
