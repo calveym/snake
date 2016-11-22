@@ -6,6 +6,8 @@ window.onload = function () {
   var canvasSize = 500;
   var food = new Food();
 
+
+// entity
   function Food () {
     this.foodExists = false;
   }
@@ -40,6 +42,9 @@ window.onload = function () {
     }
   };
 
+
+
+// MAIN
   function gameLoop(self) {
     tick += 1;
     if(tick === 1){
@@ -55,10 +60,14 @@ window.onload = function () {
   gameLoop(this);
   window.addEventListener('keydown',doKeyDown,true);
 
+
+  // main
   function setup() {
     food.updateFood();
   }
 
+
+  // main
   function updatePosition() {
     var head = snake.getHeadPosition();
     food.isFoodEaten(head);
@@ -71,6 +80,8 @@ window.onload = function () {
     snake.checkBoundary();
   }
 
+
+  // main
   function draw() {
     screen.clearRect(0, 0, canvasSize, canvasSize);
     food.updateFood();
@@ -79,6 +90,9 @@ window.onload = function () {
     });
   }
 
+
+
+  // entity
   function Snake() {
     this.direction = 'down';
     this.position = [[10, 10]];
@@ -88,6 +102,8 @@ window.onload = function () {
     return this.position[0];
   };
 
+
+  // collision
   Snake.prototype.checkBoundary = function () {
     if (this.position[0][0] >= 25){
       this.position[0][0] = 0;
@@ -118,6 +134,8 @@ window.onload = function () {
     }
   };
 
+
+  //inputter
   function doKeyDown(evt){
     switch (evt.keyCode) {
       case 38:
