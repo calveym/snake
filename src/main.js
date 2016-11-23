@@ -5,14 +5,18 @@ window.onload = function () {
   var canvasSize = 500;
   var snake = new Snake(size, canvasSize, screen);
   var collision = new Collision();
+<<<<<<< HEAD
+  var current_position = snake.head();
+=======
   var food = new Food(collision, size, canvasSize, screen, snake);
+>>>>>>> master
 
   function gameLoop(self) {
     tick++;
     if(tick === 1){
       setup();
     }
-    if(tick % 7 === 0) {
+    if(tick % 6 === 0) {
       update();
     }
     draw();
@@ -35,10 +39,8 @@ window.onload = function () {
   }
 
   function update() {
-    var head = snake.head();
     collision.update(snake, tick, endGame, food);
-    food.updateFood(snake, tick);
-    snake.move(head);
+    snake.move(snake.head());
     snake.shrink(food, tick);
   }
 
@@ -56,24 +58,40 @@ window.onload = function () {
     switch (evt.keyCode) {
       case 38:
         if(snake.direction != 'down'){
-          snake.direction = 'up';
+          if (current_position[0] != snake.head()[0]){
+            current_position = snake.head();
+            move('up');
+          }
         }
       break;
       case 40:
         if(snake.direction != 'up'){
-          snake.direction = 'down';
+          if (current_position[0] != snake.head()[0]){
+            current_position = snake.head();
+            move('down');
+          }
         }
       break;
       case 37:
         if(snake.direction != 'right'){
-          snake.direction = 'left';
+          if (current_position[1] != snake.head()[1]){
+            current_position = snake.head();
+            move('left');
+          }
         }
       break;
       case 39:
         if(snake.direction != 'left'){
-          snake.direction = 'right';
+          if (current_position[1] != snake.head()[1]){
+            current_position = snake.head();
+            move('right');
+          }
         }
       break;
     }
+  }
+
+  function move(direction){
+    snake.direction = direction;
   }
 };
