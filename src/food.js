@@ -24,7 +24,7 @@ Food.prototype.randomCoor = function () {
 };
 
 Food.prototype.drawFood = function ([x, y]) {
-    screen.fillRect(x * size, y * size, size, size);
-    this.foodCoor = [x,y];
-    this.foodExists = true;
+  screen.fillRect(x * size, y * size, size, size);
+  this.foodCoor = [x,y];
+  this.foodExists = true;
 };
