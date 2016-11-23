@@ -32,7 +32,7 @@ window.onload = function () {
 
 
   function setup() {
-    food.updateFood();
+    food.drawFood();
   }
 
   function update() {
@@ -43,9 +43,13 @@ window.onload = function () {
   }
 
   function draw() {
-    screen.clearRect(0, 0, canvasSize, canvasSize);
-    food.updateFood();
+    clearScreen();
+    food.drawFood();
     snake.drawSnake();
+  }
+
+  function clearScreen() {
+    screen.clearRect(0, 0, canvasSize, canvasSize);
   }
 
   function doKeyDown(evt){

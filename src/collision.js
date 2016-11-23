@@ -20,7 +20,7 @@ Collision.prototype.isFoodEaten = function (tick, snake, food) {
   if (head[0] === food.foodCoor[0] && head[1] === food.foodCoor[1]) {
     food.foodExists = false;
     food.feedTick = tick;
-    food.updateFood();
+    food.drawFood();
   }
 };
 
