@@ -7,18 +7,14 @@ window.onload = function () {
   var food = new Food(size, canvasSize, screen);
   var collision = new Collision();
   var current_position = snake.head();
-  var new_position = [];
 
   function gameLoop(self) {
     tick++;
     if(tick === 1){
       setup();
     }
-    if(tick % 7 === 0) {
+    if(tick % 6 === 0) {
       update();
-    }
-    if(tick % 1 === 0) {
-      new_position = snake.head();
     }
     draw();
     requestAnimationFrame(gameLoop);
@@ -40,8 +36,6 @@ window.onload = function () {
   }
 
   function update() {
-
-
     var head = snake.head();
     collision.isSnakeOnSnake(snake, endGame);
     collision.isFoodEaten(tick, head, food);
@@ -66,7 +60,7 @@ window.onload = function () {
     switch (evt.keyCode) {
       case 38:
         if(snake.direction != 'down'){
-          if (current_position[0] != new_position[0]){
+          if (current_position[0] != snake.head()[0]){
             current_position = snake.head();
             move('up');
           }
@@ -74,7 +68,7 @@ window.onload = function () {
       break;
       case 40:
         if(snake.direction != 'up'){
-          if (current_position[0] != new_position[0]){
+          if (current_position[0] != snake.head()[0]){
             current_position = snake.head();
             move('down');
           }
@@ -82,7 +76,7 @@ window.onload = function () {
       break;
       case 37:
         if(snake.direction != 'right'){
-          if (current_position[1] != new_position[1]){
+          if (current_position[1] != snake.head()[1]){
             current_position = snake.head();
             move('left');
           }
@@ -90,7 +84,7 @@ window.onload = function () {
       break;
       case 39:
         if(snake.direction != 'left'){
-          if (current_position[1] != new_position[1]){
+          if (current_position[1] != snake.head()[1]){
             current_position = snake.head();
             move('right');
           }
