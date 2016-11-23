@@ -15,12 +15,12 @@ Collision.prototype.resolveBoundary = function (snake) {
   }
 };
 
-Collision.prototype.isFoodEaten = function (tick, snake, food) {
-  var head = snake.head();
-  if (head[0] === food.position[0] && head[1] === food.position[1]) {
-    food.foodExists = false;
-    food.feedTick = tick;
-    food.drawFood();
+Collision.prototype.isFoodEaten = function (snake, food, tick) {
+  for(i=0; i < snake.position.length; i++) {
+    if (food.position[0] === snake.position[i][0] && food.position[1] === snake.position[i][1]){
+      food.feedTick = tick;
+      return(true);
+    }
   }
 };
 
@@ -36,6 +36,5 @@ Collision.prototype.isSnakeOnSnake = function (snake, endGame) {
 
 Collision.prototype.update = function (snake, tick, endGame, food) {
   this.isSnakeOnSnake(snake, endGame);
-  this.isFoodEaten(tick, snake, food);
   this.resolveBoundary(snake);
 };

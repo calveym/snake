@@ -1,41 +1,31 @@
-var size, canvasSize, screen;
+var size, canvasSize, screen, collision;
 
-function Food (transferSize, TransferCanvasSize, transferScreen) {
+function Food (collis, transferSize, TransferCanvasSize, transferScreen) {
+  collision = collis;
+  this.position = [4, 4];
   size = transferSize;
   canvasSize = TransferCanvasSize;
   screen = transferScreen;
-  this.foodExists = false;
+  this.foodExists = true;
 }
 
-Food.prototype.drawFood = function (snake) {
-  if(this.foodExists) {
-    this.printFood(snake, this.position);
-  } else {
-    this.printFood(snake, this.randomCoor());
-  }
-
-};
-
 Food.prototype.randomCoor = function () {
-  var x = Math.floor(Math.random() * size);
-  var y = Math.floor(Math.random() * size);
-  return [x,y];
+  this.position[0] = Math.floor(Math.random() * size);
+  this.position[1] = Math.floor(Math.random() * size);
+  console.log("Running");
 };
 
-Food.prototype.foodOnSnake = function (snake) {
-  console.log(this)
-  for(i=0; i < snake.position.length; i++)
-    if (this.position[0] === snake.position[i][0] && this.position[1] === snake.position[i][1])
-    {
-    this.drawFood(this.randomCoor());
-    }
-
+Food.prototype.generateFood = function (snake, tick) {
+  while(collision.isFoodEaten(snake, this, tick)) {
+    this.randomCoor();
+  }
 };
 
-Food.prototype.printFood = function (snake, [x, y]) {
-  console.log(snake);
-  this.foodOnSnake(snake);
-  screen.fillRect(x * size, y * size, size, size);
-  this.position = [x,y];
+Food.prototype.printFood = function () {
   this.foodExists = true;
+  screen.fillRect(this.position[0] * size, this.position[1] * size, size, size);
+};
+
+Food.prototype.updateFood = function (snake, tick) {
+  this.generateFood(snake, tick);
 };
