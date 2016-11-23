@@ -6,7 +6,8 @@ window.onload = function () {
   var snake = new Snake(size, canvasSize, screen);
   var food = new Food(size, canvasSize, screen);
   var collision = new Collision();
-
+  var current_position = snake.head();
+  var new_position = [];
 
   function gameLoop(self) {
     tick++;
@@ -15,6 +16,9 @@ window.onload = function () {
     }
     if(tick % 7 === 0) {
       update();
+    }
+    if(tick % 1 === 0) {
+      new_position = snake.head();
     }
     draw();
     requestAnimationFrame(gameLoop);
@@ -41,14 +45,13 @@ window.onload = function () {
     var head = snake.head();
     collision.isSnakeOnSnake(snake, endGame);
     collision.isFoodEaten(tick, head, food);
-    collision.resolveBoundary(snake);
     snake.move(head);
     if(tick - food.feedTick >= 20) {
       snake.position.pop();
     } else if(food.feedTick === undefined) {
       snake.position.pop();
     }
-
+    collision.resolveBoundary(snake);
   }
 
   function draw() {
@@ -63,24 +66,40 @@ window.onload = function () {
     switch (evt.keyCode) {
       case 38:
         if(snake.direction != 'down'){
-          snake.direction = 'up';
+          if (current_position[0] != new_position[0]){
+            current_position = snake.head();
+            move('up');
+          }
         }
       break;
       case 40:
         if(snake.direction != 'up'){
-          snake.direction = 'down';
+          if (current_position[0] != new_position[0]){
+            current_position = snake.head();
+            move('down');
+          }
         }
       break;
       case 37:
         if(snake.direction != 'right'){
-          snake.direction = 'left';
+          if (current_position[1] != new_position[1]){
+            current_position = snake.head();
+            move('left');
+          }
         }
       break;
       case 39:
         if(snake.direction != 'left'){
-          snake.direction = 'right';
+          if (current_position[1] != new_position[1]){
+            current_position = snake.head();
+            move('right');
+          }
         }
       break;
     }
+  }
+
+  function move(direction){
+    snake.direction = direction;
   }
 };
