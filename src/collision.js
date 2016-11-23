@@ -17,7 +17,7 @@ Collision.prototype.resolveBoundary = function (snake) {
 
 Collision.prototype.isFoodEaten = function (tick, snake, food) {
   var head = snake.head();
-  if (head[0] === food.foodCoor[0] && head[1] === food.foodCoor[1]) {
+  if (head[0] === food.position[0] && head[1] === food.position[1]) {
     food.foodExists = false;
     food.feedTick = tick;
     food.drawFood();
