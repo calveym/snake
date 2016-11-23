@@ -12,7 +12,6 @@ function Food (collis, transferSize, TransferCanvasSize, transferScreen) {
 Food.prototype.randomCoor = function () {
   this.position[0] = Math.floor(Math.random() * size);
   this.position[1] = Math.floor(Math.random() * size);
-  console.log("Running");
 };
 
 Food.prototype.generateFood = function (snake, tick) {

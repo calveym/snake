@@ -39,6 +39,7 @@ window.onload = function () {
   function update() {
     collision.update(snake, tick, endGame, food);
     snake.move(snake.head());
+    food.updateFood(snake, tick);
     snake.shrink(food, tick);
   }
 
