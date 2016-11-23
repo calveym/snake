@@ -1,13 +1,11 @@
 Wednesday:
 
-  TESTS!!!!! morning! - collsion needs fixing.
-
   refactor main methods - take out individual collision calls
 
   update function - add food
       - collisionUpdate (checks and resolve collisons)
       - snake.update (runs all location for snake)
-      - food.update(check for existion - set co-or)
+      - food.update(check exist - set co-or)
 
   draw function
     - print to screen.
