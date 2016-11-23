@@ -32,28 +32,23 @@ window.onload = function () {
 
 
   function setup() {
-    food.updateFood();
+    food.drawFood();
   }
 
   function update() {
-    var head = snake.head();
-    collision.isSnakeOnSnake(snake, endGame);
-    collision.isFoodEaten(tick, head, food);
-    snake.move(head);
-    if(tick - food.feedTick >= 20) {
-      snake.position.pop();
-    } else if(food.feedTick === undefined) {
-      snake.position.pop();
-    }
-    collision.resolveBoundary(snake);
+    collision.update(snake, tick, endGame, food);
+    snake.move(snake.head());
+    snake.shrink(food, tick);
   }
 
   function draw() {
+    clearScreen();
+    food.drawFood();
+    snake.drawSnake();
+  }
+
+  function clearScreen() {
     screen.clearRect(0, 0, canvasSize, canvasSize);
-    food.updateFood();
-    snake.position.forEach(function(cube) {
-      screen.fillRect(cube[0] * size, cube[1] * size, size, size);
-    });
   }
 
   function doKeyDown(evt){

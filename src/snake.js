@@ -27,3 +27,17 @@ Snake.prototype.move = function(head) {
     this.position.unshift([head[0] + 1, head[1]]);
   }
 };
+
+Snake.prototype.shrink = function (food, tick) {
+  if(tick - food.feedTick >= 20) {
+    this.position.pop();
+  } else if(food.feedTick === undefined) {
+    this.position.pop();
+  }
+};
+
+Snake.prototype.drawSnake = function () {
+  this.position.forEach(function(cube) {
+    screen.fillRect(cube[0] * size, cube[1] * size, size, size);
+  });
+};
