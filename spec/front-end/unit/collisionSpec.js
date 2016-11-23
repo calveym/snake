@@ -1,14 +1,22 @@
 describe("Collision", function () {
-  describe("#runChecks", function () {
-
+  beforeEach(function () {
+    collision = new Collision();
   });
-  describe("#snakeOnSnake", function () {
 
-    spyOn(snake, 'position');
-    snake.position = [[10, 10], [10, 9], [9, 9], [9, 10], [10, 10]];
+  describe("#isSnakeOnSnake", function () {
     it("returns true if duplicate in snake array", function () {
-      collision = new Collision();
-      expect(collision.isSnakeOnSnake(snake.position)).toEqual(true);
+      var snake = new Snake();
+      endGame = jasmine.createSpy("endGame spy");
+      snake.position = [[10, 10], [10, 9], [9, 9], [9, 10], [10, 10]];
+      expect(collision.isSnakeOnSnake(snake, endGame)).toEqual(true);
+    });
+    
+    it("calls endgame", function () {
+      snake = new Snake();
+      endGame = jasmine.createSpy("endGame spy");
+      snake.position = [[10, 10], [10, 9], [9, 9], [9, 10], [10, 10]];
+      collision.isSnakeOnSnake(snake, endGame);
+      expect(endGame).toHaveBeenCalled();
     });
   });
 });
