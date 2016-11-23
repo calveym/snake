@@ -3,7 +3,7 @@ describe("Food", function () {
   beforeEach(function (){
 
     food = new Food();
-    spyOn(var transferScreen, 'fillRect')
+    spyOn(var screen, 'fillRect')
   });
 
 
