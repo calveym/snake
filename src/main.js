@@ -41,13 +41,14 @@ window.onload = function () {
     var head = snake.head();
     collision.isSnakeOnSnake(snake, endGame);
     collision.isFoodEaten(tick, head, food);
+    collision.resolveBoundary(snake);
     snake.move(head);
     if(tick - food.feedTick >= 20) {
       snake.position.pop();
     } else if(food.feedTick === undefined) {
       snake.position.pop();
     }
-    collision.resolveBoundary(snake);
+
   }
 
   function draw() {

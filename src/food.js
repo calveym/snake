@@ -11,8 +11,10 @@ function Food (transferSize, TransferCanvasSize, transferScreen) {
 Food.prototype.updateFood = function () {
   if(this.foodExists) {
     this.drawFood(this.foodCoor);
+    return (true)
   } else {
     this.drawFood(this.randomCoor());
+    return (false)
   }
 
 };
