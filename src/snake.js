@@ -29,7 +29,8 @@ Snake.prototype.move = function(head) {
 };
 
 Snake.prototype.shrink = function (food, tick) {
-  if(tick - food.feedTick >= 20) {
+  console.log(tick + " " + food.feedTick);
+  if(tick - food.feedTick >= 10) {
     this.position.pop();
   } else if(food.feedTick === undefined) {
     this.position.pop();

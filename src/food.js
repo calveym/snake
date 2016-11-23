@@ -1,29 +1,31 @@
-var size, canvasSize, screen;
+var size, canvasSize, screen, collision;
 
-function Food (transferSize, TransferCanvasSize, transferScreen) {
+function Food (collis, transferSize, TransferCanvasSize, transferScreen) {
+  collision = collis;
+  this.position = [4, 4];
   size = transferSize;
   canvasSize = TransferCanvasSize;
   screen = transferScreen;
-  this.foodExists = false;
+  this.foodExists = true;
 }
 
-Food.prototype.drawFood = function () {
-  if(this.foodExists) {
-    this.drawFood(this.foodCoor);
-  } else {
-    this.drawFood(this.randomCoor());
-  }
-
-};
-
 Food.prototype.randomCoor = function () {
-  var x = Math.floor(Math.random() * size);
-  var y = Math.floor(Math.random() * size);
-  return [x,y];
+  this.position[0] = Math.floor(Math.random() * size);
+  this.position[1] = Math.floor(Math.random() * size);
+  console.log("Running");
 };
 
-Food.prototype.printFood = function ([x, y]) {
-  screen.fillRect(x * size, y * size, size, size);
-  this.foodCoor = [x,y];
+Food.prototype.generateFood = function (snake, tick) {
+  while(collision.isFoodEaten(snake, this, tick)) {
+    this.randomCoor();
+  }
+};
+
+Food.prototype.printFood = function () {
   this.foodExists = true;
+  screen.fillRect(this.position[0] * size, this.position[1] * size, size, size);
+};
+
+Food.prototype.updateFood = function (snake, tick) {
+  this.generateFood(snake, tick);
 };

@@ -4,9 +4,8 @@ window.onload = function () {
   var size = 20;
   var canvasSize = 500;
   var snake = new Snake(size, canvasSize, screen);
-  var food = new Food(size, canvasSize, screen);
   var collision = new Collision();
-
+  var food = new Food(collision, size, canvasSize, screen, snake);
 
   function gameLoop(self) {
     tick++;
@@ -32,19 +31,20 @@ window.onload = function () {
 
 
   function setup() {
-    food.drawFood();
+    food.printFood();
   }
 
   function update() {
     var head = snake.head();
     collision.update(snake, tick, endGame, food);
+    food.updateFood(snake, tick);
     snake.move(head);
     snake.shrink(food, tick);
   }
 
   function draw() {
     clearScreen();
-    food.drawFood();
+    food.printFood(snake);
     snake.drawSnake();
   }
 
