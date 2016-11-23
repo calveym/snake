@@ -5,10 +5,10 @@ function Snake(transferSize, TransferCanvasSize, transferScreen) {
   canvasSize = TransferCanvasSize;
   screen = transferScreen;
   this.direction = 'down';
-  this.position = [[10, 10]];
+  this.position = [[10, 10],[10,9]];
 }
 
-Snake.prototype.getHeadPosition = function () {
+Snake.prototype.head = function () {
   return this.position[0];
 };
 

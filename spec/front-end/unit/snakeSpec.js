@@ -9,7 +9,7 @@ describe("Snake", function () {
 
   describe("#getHeadPosition", function () {
     it("returns head position", function () {
-      expect(snake.getHeadPosition()).toEqual([10, 10]);
+      expect(snake.head()).toEqual([10, 10]);
     });
   });
 
