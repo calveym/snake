@@ -7,9 +7,10 @@ describe("Food", function () {
   describe("#updateFood", function(){
     it("generates food rect", function () {
       spyOn(food, 'randomCoor').and.returnValue("[3,4]");
-      spyOn(food, 'drawFood');
+      spyOn(food, 'printFood');
+      spyOn(collision, 'isFoodEaten')
       food.updateFood();
-      expect(food.drawFood).toHaveBeenCalled();
+      expect(food.generateFood).toHaveBeenCalled();
       expect(food.randomCoor).toHaveBeenCalled();
     });
   });
