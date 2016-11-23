@@ -35,3 +35,9 @@ Snake.prototype.shrink = function (food, tick) {
     this.position.pop();
   }
 };
+
+Snake.prototype.drawSnake = function () {
+  this.position.forEach(function(cube) {
+    screen.fillRect(cube[0] * size, cube[1] * size, size, size);
+  });
+};

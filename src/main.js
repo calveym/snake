@@ -45,9 +45,7 @@ window.onload = function () {
   function draw() {
     screen.clearRect(0, 0, canvasSize, canvasSize);
     food.updateFood();
-    snake.position.forEach(function(cube) {
-      screen.fillRect(cube[0] * size, cube[1] * size, size, size);
-    });
+    snake.drawSnake();
   }
 
   function doKeyDown(evt){
