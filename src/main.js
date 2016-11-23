@@ -5,11 +5,9 @@ window.onload = function () {
   var canvasSize = 500;
   var snake = new Snake(size, canvasSize, screen);
   var collision = new Collision();
-<<<<<<< HEAD
   var current_position = snake.head();
-=======
   var food = new Food(collision, size, canvasSize, screen, snake);
->>>>>>> master
+
 
   function gameLoop(self) {
     tick++;
