@@ -1,0 +1,27 @@
+{
+  "name": "snake",
+  "version": "1.0.0",
+  "description": "play snake",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/calveym/snake.git"
+  },
+  "keywords": [
+    "snake"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/calveym/snake/issues"
+  },
+  "homepage": "https://github.com/calveym/snake#readme",
+  "dependencies": {
+    "ejs": "~1.0.0",
+    "express": "~4.9.8"
+  }
+}
