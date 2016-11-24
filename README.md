@@ -1,6 +1,6 @@
 [![Waffle](https://badge.waffle.io/calveym/snake.png?label=ready&title=Ready)](https://waffle.io/calveym/snake)
 #Javascript snake
-
+alkncklac
 ##Goal:
 A recreation of snake.
 
