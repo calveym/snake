@@ -7,8 +7,8 @@ function Food (collis, transferSize, TransferCanvasSize, transferScreen) {
   canvasSize = TransferCanvasSize;
   screen = transferScreen;
   this.foodExists = true;
-  mice = new Image();
-  mice.src = "img/mice.png";
+  this.mice = new Image();
+  this.mice.src = "img/mice.png";
 }
 
 Food.prototype.randomCoor = function () {
@@ -29,7 +29,7 @@ Food.prototype.printFood = function () {
 };
 
 Food.prototype.make_mouse = function (x,y,size) {
-    screen.drawImage(mice, x, y , size, size)
+    screen.drawImage(this.mice, x, y , size, size)
   };
 
 
