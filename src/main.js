@@ -8,7 +8,6 @@ window.onload = function () {
   var current_position = snake.head();
   var food = new Food(collision, size, canvasSize, screen, snake);
 
-
   function gameLoop(self) {
     tick++;
     if(tick === 1){
@@ -24,8 +23,8 @@ window.onload = function () {
   gameLoop(this);
 
   function endGame() {
-    console.log("game over, snake died :( Your score: " + snake.position.length * 100);
-    document.getElementById("game").innerHTML = "game over, snake died :( Your score: " + snake.position.length * 100;
+    console.log("game over, snake died :( Your score: " + food.score);
+    document.getElementById("game").innerHTML = "game over, snake died :( Your score: " + food.score;
       // hide canvas and show score page
   }
 
@@ -45,12 +44,18 @@ window.onload = function () {
 
   function draw() {
     clearScreen();
+    drawScore();
     food.printFood(snake);
     snake.drawSnake();
   }
 
   function clearScreen() {
     screen.clearRect(0, 0, canvasSize, canvasSize);
+  }
+
+  function drawScore() {
+    screen.font = "30px Open Sans";
+    screen.fillText(food.score, 10, 40);
   }
 
   function doKeyDown(evt){

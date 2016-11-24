@@ -19,6 +19,7 @@ Collision.prototype.isFoodEaten = function (snake, food, tick) {
   for(i=0; i < snake.position.length; i++) {
     if (food.position[0] === snake.position[i][0] && food.position[1] === snake.position[i][1]){
       food.feedTick = tick;
+      food.score++;
       return(true);
     }
   }
