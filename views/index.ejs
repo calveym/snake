@@ -8,11 +8,13 @@
   <script src="main.js"></script>
 </head>
 <body>
+  <article class="content">
   <div id= "game">
     <canvas height="500" width="500" id="screen">
       Your browser is too old to support canvas.
     </canvas>
   </div>
+</article>
   <form action="/" method="post">
     <input type="text" name="name">
     <input type="text" name="score">
@@ -21,6 +23,8 @@
     <%= scores.forEach(function(score){
       score.name + score.score
     }); %>
+
+    
   <style>
   #screen {
     border-style: solid;
@@ -28,6 +32,35 @@
     border-color: black;
     background-color: #93ce2d;
   }
+
+  body {
+  padding: 50px;
+  padding-top: 0px;
+  margin-top: 0px;
+  font-family: 'Open Sans', sans-serif;
+  }
+
+  h2 {
+    size: 1.5em;
+  }
+
+  a {
+    text-decoration: none;
+    color: #00B7FF;
+  }
+
+  article {
+    margin-top: 0px;
+  }
+
+  article.content {
+    margin-left: auto;
+    margin-right: auto;
+    width: 504px;
+    height: 504px;
+    display: block;
+  }
+
   </style>
 </body>
 </html>
