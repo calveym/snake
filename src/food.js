@@ -3,6 +3,7 @@ var size, canvasSize, screen, collision;
 function Food (collis, transferSize, TransferCanvasSize, transferScreen) {
   collision = collis;
   this.position = [4, 4];
+  this.score = 1;
   size = transferSize;
   canvasSize = TransferCanvasSize;
   screen = transferScreen;

@@ -1,17 +1,20 @@
 describe("Food", function () {
+  var food,
+      collision,
+      snake;
 
   beforeEach(function (){
-   food = new Food();
+    food = new Food();
   });
 
-  describe("#updateFood", function(){
-    it("generates food rect", function () {
-      spyOn(food, 'randomCoor').and.returnValue("[3,4]");
-      spyOn(food, 'printFood');
-      spyOn(collision, 'isFoodEaten')
-      food.updateFood();
-      expect(food.generateFood).toHaveBeenCalled();
-      expect(food.randomCoor).toHaveBeenCalled();
+  describe("#score", function () {
+    it("Goes up by 1 when food is eaten", function () {
+      collision = new Collision();
+      snake = new Snake();
+      food.position = [10, 10];
+      expect(food.score).toBe(1);
+      collision.isFoodEaten(snake, food, 1);
+      expect(food.score).toBe(2);
     });
   });
 });
