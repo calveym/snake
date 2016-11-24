@@ -3,7 +3,7 @@ var models = require('./models');
 var express = require('express');
 var app = express();
 var router = express.Router();
-var Score = require('./models').Score;
+var Score = require('./models/score').Score;
 // set the port of our application
 // process.env.PORT lets the port be set by Heroku
 var port = process.env.PORT || 8080;
@@ -16,8 +16,9 @@ app.use(express.static(__dirname + '/src'));
 
 // set the home page route
 app.get('/', function(req, res) {
-  console.log(models)
-  models.Score.findAll().then(function(scores){
+  console.log(models);
+  
+  models.Score.findAll({}).then(function(scores){
     res.render('index', {
       scores: scores
     });
