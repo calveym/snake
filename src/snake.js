@@ -6,6 +6,8 @@ function Snake(transferSize, TransferCanvasSize, transferScreen) {
   screen = transferScreen;
   this.direction = 'down';
   this.position = [[10, 10],[10,9]];
+  this.scale = new Image();
+  this.scale.src = "img/scale.png";
 }
 
 Snake.prototype.head = function () {
@@ -37,7 +39,8 @@ Snake.prototype.shrink = function (food, tick) {
 };
 
 Snake.prototype.drawSnake = function () {
+  var scale = this.scale;
   this.position.forEach(function(cube) {
-    screen.fillRect(cube[0] * size, cube[1] * size, size, size);
+    screen.drawImage(scale, cube[0] * size, cube[1] * size, size, size);
   });
 };
