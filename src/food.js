@@ -25,6 +25,15 @@ Food.prototype.printFood = function () {
   screen.fillRect(this.position[0] * size, this.position[1] * size, size, size);
 };
 
+// Food.prototype.make_mouse = function (screen, x,y,size) {
+//   base_image = new Image();
+//   base_image.src = 'img/mice.png'
+//   base_image.onload = function () {
+//     screen.drawImage(base_image, x, y , size, size)
+//   }
+//
+// };
+
 Food.prototype.updateFood = function (snake, tick) {
   this.generateFood(snake, tick);
 };
