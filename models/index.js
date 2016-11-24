@@ -1,5 +1,7 @@
 'use strict';
 
+var express = require('express');
+var router = express.Router();
 var fs        = require('fs');
 var path      = require('path');
 var Sequelize = require('sequelize');
@@ -34,3 +36,4 @@ db.sequelize = sequelize;
 db.Sequelize = Sequelize;
 
 module.exports = db;
+module.exports = router;
