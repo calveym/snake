@@ -7,6 +7,8 @@ function Food (collis, transferSize, TransferCanvasSize, transferScreen) {
   canvasSize = TransferCanvasSize;
   screen = transferScreen;
   this.foodExists = true;
+  mice = new Image();
+  mice.src = "img/mice.png";
 }
 
 Food.prototype.randomCoor = function () {
@@ -22,17 +24,14 @@ Food.prototype.generateFood = function (snake, tick) {
 
 Food.prototype.printFood = function () {
   this.foodExists = true;
-  screen.fillRect(this.position[0] * size, this.position[1] * size, size, size);
+  this.make_mouse(this.position[0] * size, this.position[1] * size, size, size);
+
 };
 
-// Food.prototype.make_mouse = function (screen, x,y,size) {
-//   base_image = new Image();
-//   base_image.src = 'img/mice.png'
-//   base_image.onload = function () {
-//     screen.drawImage(base_image, x, y , size, size)
-//   }
-//
-// };
+Food.prototype.make_mouse = function (x,y,size) {
+    screen.drawImage(mice, x, y , size, size)
+  };
+
 
 Food.prototype.updateFood = function (snake, tick) {
   this.generateFood(snake, tick);
