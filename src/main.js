@@ -33,6 +33,13 @@ window.onload = function () {
 
   function setup() {
     food.printFood();
+    // var base_image = new Image();
+    // base_image.src = 'img/mice.png'
+    //
+    // base_image.onload = function () {
+    //   console.log(2)
+    //   screen.drawImage(base_image, 30,30)
+    // }
   }
 
   function update() {
@@ -98,4 +105,5 @@ window.onload = function () {
   function move(direction){
     snake.direction = direction;
   }
+
 };
