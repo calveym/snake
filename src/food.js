@@ -1,11 +1,10 @@
-var size, canvasSize, screen, collision;
+var size, screen, collision;
 
-function Food (collis, transferSize, TransferCanvasSize, transferScreen) {
+function Food (collis, transferSize, transferScreen) {
   collision = collis;
   this.position = [4, 4];
   this.score = 1;
   size = transferSize;
-  canvasSize = TransferCanvasSize;
   screen = transferScreen;
   this.foodExists = true;
   this.mice = new Image();
@@ -13,8 +12,8 @@ function Food (collis, transferSize, TransferCanvasSize, transferScreen) {
 }
 
 Food.prototype.randomCoor = function () {
-  this.position[0] = Math.floor(Math.random() * size);
-  this.position[1] = Math.floor(Math.random() * size);
+  this.position[0] = Math.floor(Math.random() * 40);
+  this.position[1] = Math.floor(Math.random() * 25);
 };
 
 Food.prototype.generateFood = function (snake, tick) {

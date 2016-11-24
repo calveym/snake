@@ -1,8 +1,8 @@
-var size, canvasSize, screen;
+var size, screen;
 
-function Snake(transferSize, TransferCanvasSize, transferScreen) {
+function Snake(transferSize, transferScreen) {
   size = transferSize;
-  canvasSize = TransferCanvasSize;
+
   screen = transferScreen;
   this.direction = 'down';
   this.position = [[10, 10],[10,9]];

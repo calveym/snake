@@ -2,11 +2,12 @@ window.onload = function () {
   var screen = document.getElementById("screen").getContext("2d");
   var tick = 0;
   var size = 20;
-  var canvasSize = 500;
-  var snake = new Snake(size, canvasSize, screen);
+  var canvasSizeHeight = 500;
+  var canvasSizeWidth = 800;
+  var snake = new Snake(size, screen);
   var collision = new Collision();
   var current_position = snake.head();
-  var food = new Food(collision, size, canvasSize, screen, snake);
+  var food = new Food(collision, size, screen, snake);
 
   function gameLoop(self) {
     tick++;
@@ -25,7 +26,7 @@ window.onload = function () {
   function endGame() {
     console.log("game over, snake died :( Your score: " + food.score);
     document.getElementById("game").innerHTML = "game over, snake died :( Your score: " + food.score;
-      // hide canvas and show score page
+
   }
 
   window.addEventListener('keydown', doKeyDown, true);
@@ -33,13 +34,6 @@ window.onload = function () {
 
   function setup() {
     food.printFood();
-    // var base_image = new Image();
-    // base_image.src = 'img/mice.png'
-    //
-    // base_image.onload = function () {
-    //   console.log(2)
-    //   screen.drawImage(base_image, 30,30)
-    // }
   }
 
   function update() {
@@ -57,7 +51,7 @@ window.onload = function () {
   }
 
   function clearScreen() {
-    screen.clearRect(0, 0, canvasSize, canvasSize);
+    screen.clearRect(0, 0, canvasSizeWidth,canvasSizeHeight);
   }
 
   function drawScore() {

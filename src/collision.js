@@ -1,14 +1,14 @@
 function Collision() {}
 
 Collision.prototype.resolveBoundary = function (snake) {
-  if (snake.position[0][0] >= 25){
+  if (snake.position[0][0] >= 40){
     snake.position[0][0] = 0;
   }
   else if (snake.position[0][1] >= 25){
     snake.position[0][1] = 0;
   }
   else if (snake.position[0][0] < 0){
-    snake.position[0][0] = 24;
+    snake.position[0][0] = 39;
   }
   else if (snake.position[0][1] < 0){
     snake.position[0][1] = 24;
