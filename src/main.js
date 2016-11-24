@@ -14,22 +14,40 @@ window.onload = function () {
     if(tick === 1){
       setup();
     }
-    if(tick % 6 === 0) {
+    if(tick % 5 === 0) {
       update();
     }
     draw();
     requestAnimationFrame(gameLoop);
   }
 
+
   gameLoop(this);
 
-  function endGame() {
+  function endGame(thing) {
     console.log("game over, snake died :( Your score: " + food.score);
     document.getElementById("game").innerHTML = "game over, snake died :( Your score: " + food.score;
+    createButton();
+    return;
+
+  }
+
+  function createButton () {
+    var button = document.createElement("button")
+    var game = document.getElementById("game")
+    button.innerHTML = "New Game"
+    button.id = "arcade-button"
+
+    game.appendChild(button);
+    document.querySelector("#arcade-button").addEventListener("click", function() {
+      location.reload();
+    });
 
   }
 
   window.addEventListener('keydown', doKeyDown, true);
+
+
 
 
   function setup() {
