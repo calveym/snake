@@ -10,6 +10,10 @@ var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config.json')[env];
 var db        = {};
 
+console.log(config.use_env_variable);
+console.log(process.env);
+var sequelize = new Sequelize(process.env[config.use_env_variable]);
+
 if (config.use_env_variable) {
   console.log("HELLO");
   console.log(config.use_env_variable);
