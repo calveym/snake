@@ -15,6 +15,11 @@ app.use(express.static(__dirname + '/src'));
 // set the home page route
 app.get('/', function(req, res) {
 
+  res.render('index', {
+  });
+});
+
+
     // ejs render automatically looks in the views folder
     res.render('index');
 });
