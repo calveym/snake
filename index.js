@@ -4,6 +4,7 @@ var express = require('express');
 var router = express.Router();
 var app = express();
 var index = require('./routes/index');
+var bodyParser = require('body-parser');
 
 
 // set the port of our application
@@ -15,17 +16,14 @@ app.set('view engine', 'ejs');
 
 // make express look in the public directory for assets (css/js/img)
 app.use(express.static(__dirname + '/public'));
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use('/', index);
 
 // set the home page route
 app.get('/', function(req, res) {
-  console.log(models);
-  res.render('index', {
-  });
-});
-
-app.post('/', function(req, res) {
-  res.redirect('/');
+  res.render('index');
 });
 
 app.listen(port, function() {

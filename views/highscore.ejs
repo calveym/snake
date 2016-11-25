@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Snake</title>
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+</head>
+<body>
+  <div id="content-center">
+    <h3>Highscores:</h3><hr />
+    <% scores.forEach(function (score) { %>
+      <h4>&nbsp&nbsp&nbsp&nbsp<%= score.name + ": " + score.score %></h4>
+    <% }); %>
+  </div>
+</body>
+</html>
+
+<style>
+#content-center {
+  padding: 20px;
+  margin: auto;
+  margin-top: 100px;
+  display: block;
+  border-style: solid;
+  border-color: black;
+  border-width: 2px;
+  width: 60%;
+}
+</style>

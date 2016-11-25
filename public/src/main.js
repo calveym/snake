@@ -27,17 +27,14 @@ window.onload = function () {
   function endGame(thing) {
     console.log("game over, snake died :( Your score: " + food.score);
     document.getElementById("game").innerHTML = "game over, snake died :( Your score: " + food.score;
-    createButton();
-    return;
-
+    window.location.replace("/highscore1997456/" + food.score);
   }
 
   function createButton () {
-    var button = document.createElement("button")
-    var game = document.getElementById("game")
-    button.innerHTML = "New Game"
-    button.id = "arcade-button"
-
+    var button = document.createElement("button");
+    var game = document.getElementById("game");
+    button.innerHTML = "New Game";
+    button.id = "arcade-button";
     game.appendChild(button);
     document.querySelector("#arcade-button").addEventListener("click", function() {
       location.reload();
