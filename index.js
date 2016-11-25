@@ -19,7 +19,6 @@ app.use('/', index);
 
 // set the home page route
 app.get('/', function(req, res) {
-  console.log(models);
   res.render('index', {
   });
 });
