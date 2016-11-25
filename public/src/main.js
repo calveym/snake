@@ -9,6 +9,8 @@ window.onload = function () {
   var current_position = snake.head();
   var food = new Food(collision, size, screen, snake);
 
+  playMusic();
+
   function gameLoop(self) {
     tick++;
     if(tick === 1){
@@ -21,6 +23,13 @@ window.onload = function () {
     requestAnimationFrame(gameLoop);
   }
 
+  function playMusic(){myAudio = new Audio('./img/tune.mp3');
+      myAudio.addEventListener('ended', function() {
+          this.currentTime = 0;
+          this.play();
+      }, false);
+      myAudio.play();
+  };
 
   gameLoop(this);
 
@@ -30,22 +39,7 @@ window.onload = function () {
     window.location.replace("/highscore1997456/" + food.score);
   }
 
-  function createButton () {
-    var button = document.createElement("button");
-    var game = document.getElementById("game");
-    button.innerHTML = "New Game";
-    button.id = "arcade-button";
-    game.appendChild(button);
-    document.querySelector("#arcade-button").addEventListener("click", function() {
-      location.reload();
-    });
-
-  }
-
   window.addEventListener('keydown', doKeyDown, true);
-
-
-
 
   function setup() {
     food.printFood();
