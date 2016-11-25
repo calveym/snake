@@ -1,7 +1,7 @@
 
-var models = require('./models');
+var models = require('./server/models');
 var router = express.Router();
-var Score = require('./models/score').Score;
+var Score = require('./server/models/score').Score;
 var express = require('express');
 var app = express();
 var index = require('./routes/index');
