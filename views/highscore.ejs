@@ -9,8 +9,9 @@
     <form action="/" method="post">
       <h4>Submit a new score: </h4><input type="text" name="name" placeholder="Enter name: " required/>
       <input type="hidden" name="score" value="<%=lastScore%>" />
-      <input type="submit" /><a href="/snake"><button value="Play again">Play again</button></a>
+      <input type="submit" />
     </form>
+    <a href="/snake"><button value="Play again">Play again</button></a>
     <h3>Highscores</h3><hr />
     <% scores.forEach(function (score) { %>
       <h4>&nbsp&nbsp&nbsp&nbsp<%= score.name + ": " + score.score %></h4>
