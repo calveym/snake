@@ -34,8 +34,6 @@ window.onload = function () {
   gameLoop(this);
 
   function endGame(thing) {
-    console.log("game over, snake died :( Your score: " + food.score);
-    document.getElementById("game").innerHTML = "game over, snake died :( Your score: " + food.score;
     window.location.replace("/highscore1997456/" + food.score);
   }
 
