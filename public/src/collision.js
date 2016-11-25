@@ -32,7 +32,6 @@ Collision.prototype.isSnakeOnSnake = function (snake, endGame) {
   for(i=1; i < snake.position.length; i++){
     if (snake.position[i][0] === snake.head()[0] && snake.position[i][1] === snake.head()[1])
     {
-      console.log("SNKE")
       endGame();
       return(true);
     }

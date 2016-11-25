@@ -34,8 +34,8 @@ window.onload = function () {
   gameLoop(this);
 
   function endGame(thing) {
-    console.log("hello")
-    window.location.replace("/highscore1997456/" + food.score);
+
+    window.location.replace("http://snakesonascreen.herokuapp.com/highscore1997456/" + food.score);
   }
 
   window.addEventListener('keydown', doKeyDown, true);
