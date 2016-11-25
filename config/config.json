@@ -16,7 +16,7 @@
   "production": {
     "username": null,
     "password": null,
-    "database": "snake_production",
+    "database": "postgresql-convex-40153",
     "host": "127.0.0.1",
     "dialect": "postgres"
   }
