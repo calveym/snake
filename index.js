@@ -23,7 +23,7 @@ app.use('/', index);
 
 // set the home page route
 app.get('/', function(req, res) {
-  res.render('index');
+  res.redirect('/snake');
 });
 
 app.listen(port, function() {

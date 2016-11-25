@@ -17,7 +17,7 @@
     "username": null,
     "password": null,
     "database": "postgresql-convex-40153",
-    "host": "127.0.0.1",
+    "host": "postgres://ptascfbvvzjkag:auKUGRSBjH_EAl0FJgKUALhiAp@ec2-54-83-5-43.compute-1.amazonaws.com:5432/de3ce26mpj88hp",
     "dialect": "postgres"
   }
 }
