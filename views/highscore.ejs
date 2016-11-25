@@ -13,7 +13,7 @@
     </form>
     <h3>Highscores:</h3><hr />
     <% scores.forEach(function (score) { %>
-      <h4>&nbsp&nbsp&nbsp&nbsp<%= score.name + ": " + score.score %></h4>
+      <h4>&nbsp&nbsp&nbsp&nbsp<%= score.name + ": " + score.score * 100 %></h4>
     <% }); %>
   </div>
 </body>
