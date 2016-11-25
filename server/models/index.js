@@ -18,7 +18,7 @@ if (process.env["NODE_ENV"] === "production") {
   console.log("HELLO");
   console.log(config.use_env_variable);
   console.log(process.env["DATABASE_URL"]);
-  var sequelize = new Sequelize(process.env[config.use_env_variable]);
+  var sequelize = new Sequelize(process.env["DATABASE_URL"]);
 } else {
   console.log("This runs");
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
