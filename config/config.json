@@ -14,10 +14,10 @@
     "dialect": "postgres"
   },
   "production": {
-    "username": null,
-    "password": null,
-    "database": "postgresql-convex-40153",
-    "host": "127.0.1",
+    "username": "ptascfbvvzjkag",
+    "password": "auKUGRSBjH_EAl0FJgKUALhiAp",
+    "database": "de3ce26mpj88hp ",
+    "host": "ec2-54-83-5-43.compute-1.amazonaws.com",
     "dialect": "postgres"
   }
 }
