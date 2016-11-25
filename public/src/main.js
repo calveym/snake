@@ -9,6 +9,8 @@ window.onload = function () {
   var current_position = snake.head();
   var food = new Food(collision, size, screen, snake);
 
+  playMusic();
+
   function gameLoop(self) {
     tick++;
     if(tick === 1){
@@ -21,6 +23,13 @@ window.onload = function () {
     requestAnimationFrame(gameLoop);
   }
 
+  function playMusic(){myAudio = new Audio('./img/tune.mp3');
+      myAudio.addEventListener('ended', function() {
+          this.currentTime = 0;
+          this.play();
+      }, false);
+      myAudio.play();
+  };
 
   gameLoop(this);
 
@@ -28,7 +37,6 @@ window.onload = function () {
     console.log("game over, snake died :( Your score: " + food.score);
     document.getElementById("game").innerHTML = "game over, snake died :( Your score: " + food.score;
     createButton();
-    return;
 
   }
 
@@ -42,13 +50,8 @@ window.onload = function () {
     document.querySelector("#arcade-button").addEventListener("click", function() {
       location.reload();
     });
-
   }
-
   window.addEventListener('keydown', doKeyDown, true);
-
-
-
 
   function setup() {
     food.printFood();
