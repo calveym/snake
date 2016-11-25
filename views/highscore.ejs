@@ -6,6 +6,11 @@
 </head>
 <body>
   <div id="content-center">
+    <form action="/" method="post">
+      <h4>Submit a new score: </h4><input type="text" name="name" placeholder="Enter name: "/>
+      <input type="hidden" name="score" value="<%=lastScore%>" />
+      <input type="submit" />
+    </form>
     <h3>Highscores:</h3><hr />
     <% scores.forEach(function (score) { %>
       <h4>&nbsp&nbsp&nbsp&nbsp<%= score.name + ": " + score.score %></h4>
@@ -15,6 +20,10 @@
 </html>
 
 <style>
+body {
+  font-family: 'Press Start 2P', cursive;
+}
+
 #content-center {
   padding: 20px;
   margin: auto;
