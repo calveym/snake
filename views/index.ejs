@@ -4,10 +4,10 @@
   <title>Snake</title>
   <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="css/stylesheet.css">
-  <script src="snake.js"></script>
-  <script src="food.js"></script>
-  <script src="collision.js"></script>
-  <script src="main.js"></script>
+  <script src="/src/snake.js"></script>
+  <script src="/src/food.js"></script>
+  <script src="/src/collision.js"></script>
+  <script src="/src/main.js"></script>
 </head>
 <body>
   <div >
@@ -23,9 +23,7 @@
     <input type="text" name="score">
     <input type="submit" name="Submit">
   </form>
-    <%= scores.forEach(function(score){
-      score.name + score.score
-    }); %>
+
   <style>
   #screen {
     border-style: solid;

@@ -1,8 +1,7 @@
-
 var models = require('./server/models');
-var router = express.Router();
 var Score = require('./server/models/score').Score;
 var express = require('express');
+var router = express.Router();
 var app = express();
 var index = require('./routes/index');
 
@@ -15,25 +14,17 @@ var port = process.env.PORT || 8080;
 app.set('view engine', 'ejs');
 
 // make express look in the public directory for assets (css/js/img)
-app.use(express.static(__dirname + '/src'));
+app.use(express.static(__dirname + '/public'));
 app.use('/', index);
 
 // set the home page route
 app.get('/', function(req, res) {
   console.log(models);
-
-  models.Score.findAll({}).then(function(scores){
-    res.render('index', {
-      scores: scores
-    });
+  res.render('index', {
   });
 });
 
 app.post('/', function(req, res) {
-  models.Score.create({
-    name: req.body.name,
-    score: req.body.score
-  });
   res.redirect('/');
 });
 
