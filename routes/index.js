@@ -14,7 +14,7 @@ router.post('/', function(req, res) {
 });
 
 router.get("/highscore1997456/:browser", function (req, res) {
-  models.Score.findAll({}).then(function (scores) {
+  models.Score.findAll({ limit: 10, order: [['score', 'DESC']]}).then(function (scores) {
     res.render("highscore", {scores: scores, lastScore: req.params.browser});
   });
 });
