@@ -8,7 +8,7 @@ function Food (collis, transferSize, transferScreen) {
   screen = transferScreen;
   this.foodExists = true;
   this.mice = new Image();
-  this.mice.src = "img/mice.png";
+  this.mice.src = "/img/mice.png";
 }
 
 Food.prototype.randomCoor = function () {

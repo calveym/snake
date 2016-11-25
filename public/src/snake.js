@@ -7,7 +7,7 @@ function Snake(transferSize, transferScreen) {
   this.direction = 'down';
   this.position = [[10, 10],[10,9]];
   this.scale = new Image();
-  this.scale.src = "img/scale.png";
+  this.scale.src = "/img/scale.png";
 }
 
 Snake.prototype.head = function () {
