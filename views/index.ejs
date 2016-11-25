@@ -13,13 +13,27 @@
   <div >
     <h1 id="title"> SNAKE! ON A SCREEN... </h1>
   </div>
-
-
   <div id= "game">
-  <canvas height="500" width="800" id="screen">
-    Your browser is too old to support canvas.
-  </canvas>
-</div>
+    <canvas height="500" width="500" id="screen">
+      Your browser is too old to support canvas.
+    </canvas>
+  </div>
+  <form action="/" method="post">
+    <input type="text" name="name">
+    <input type="text" name="score">
+    <input type="submit" name="Submit">
+  </form>
+    <%= scores.forEach(function(score){
+      score.name + score.score
+    }); %>
+  <style>
+  #screen {
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    background-color: #93ce2d;
+  }
+  </style>
 
 </body>
 </html>
