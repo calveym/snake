@@ -31,8 +31,3 @@ app.listen(port, function() {
 });
 
 module.exports = app;
-
-var pg = require('pg');
-
-
-});
