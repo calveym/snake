@@ -8,9 +8,13 @@ window.onload = function () {
   var collision = new Collision();
   var current_position = snake.head();
   var food = new Food(collision, size, screen, snake);
+  var tune = new Audio('./img/tune.mp3');
+    tune.play();
+
 
   function gameLoop(self) {
     tick++;
+
     if(tick === 1){
       setup();
     }
