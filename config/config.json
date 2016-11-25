@@ -17,7 +17,7 @@
     "username": null,
     "password": null,
     "database": "postgresql-convex-40153",
-    "host": "127.0.1",
+    "host": "127.0.0.1:4567",
     "dialect": "postgres"
   }
 }
