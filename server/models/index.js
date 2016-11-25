@@ -11,11 +11,12 @@ var config    = require(__dirname + '/../config.json')[env];
 var db        = {};
 
 if (config.use_env_variable) {
+  console.log("HELLO");
   console.log(config.use_env_variable);
   console.log(process.env[DATABASE_URL]);
-  console.log("HELLO")
   var sequelize = new Sequelize(process.env[config.use_env_variable]);
 } else {
+  console.log("This runs");
   var sequelize = new Sequelize(config.database, config.username, config.password, config);
 }
 
