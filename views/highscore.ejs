@@ -7,9 +7,9 @@
 <body>
   <div id="content-center">
     <form action="/" method="post">
-      <h4>Submit a new score: </h4><input type="text" name="name" placeholder="Enter name: "/>
+      <h4>Submit a new score: </h4><input type="text" name="name" placeholder="Enter name: " required/>
       <input type="hidden" name="score" value="<%=lastScore%>" />
-      <input type="submit" />
+      <input type="submit" /><a href="/snake"><button value="Play again">Play again</button></a>
     </form>
     <h3>Highscores:</h3><hr />
     <% scores.forEach(function (score) { %>
@@ -22,6 +22,11 @@
 <style>
 body {
   font-family: 'Press Start 2P', cursive;
+}
+
+button {
+  width: 75px;
+  height: 20px;
 }
 
 #content-center {
