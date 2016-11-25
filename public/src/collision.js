@@ -1,5 +1,5 @@
 function Collision() {
-  this.coin = new Audio('./img/Pickup_coin2.wav');
+  this.coin = new Audio('./img/Pickup_Coin2.mp3');
 }
 
 Collision.prototype.resolveBoundary = function (snake) {
