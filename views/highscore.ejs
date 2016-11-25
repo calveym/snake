@@ -11,7 +11,7 @@
       <input type="hidden" name="score" value="<%=lastScore%>" />
       <input type="submit" />
     </form>
-    <h3>Highscores:</h3><hr />
+    <h3>Highscores</h3><hr />
     <% scores.forEach(function (score) { %>
       <h4>&nbsp&nbsp&nbsp&nbsp<%= score.name + ": " + score.score %></h4>
     <% }); %>
@@ -22,6 +22,10 @@
 <style>
 body {
   font-family: 'Press Start 2P', cursive;
+}
+
+h3 {
+  text-align: center;
 }
 
 #content-center {
