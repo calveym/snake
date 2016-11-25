@@ -34,7 +34,8 @@ window.onload = function () {
   gameLoop(this);
 
   function endGame(thing) {
-    window.location.href("/highscore1997456/" + food.score);
+    console.log("hello")
+    window.location.replace("/highscore1997456/" + food.score);
   }
 
   window.addEventListener('keydown', doKeyDown, true);
